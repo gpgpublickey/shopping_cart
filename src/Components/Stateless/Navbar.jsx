@@ -1,5 +1,5 @@
 import React from 'react'
-import logo from '../images/logo.png'
+import logo from '../../images/logo.png'
 import CartWidget from './CartWidget';
 
 const styles = {
@@ -25,18 +25,16 @@ function goHome() {
     document.location.href = "/";
 }
 
-const navbar = () => {
+const navbar = ({links}) => {
   return (
     <header className={classnames.header}>
         <div className={classnames.headerContainer}>
-            <a className={classnames.headerContainerLink}>
-                <img src={logo} style={styles.logoHeader}/> {/* we need to improve the quality of the logo, maybe convert it to svg*/}
+            <a className={classnames.headerContainerLink} href="/">
+                <img src={logo} style={styles.logoHeader} alt="Logo"/> {/* we need to improve the quality of the logo, maybe convert it to svg*/}
                 <span className={classnames.headerContainerLinkSpan}>Adopt a pet</span>
             </a>
             <nav className={classnames.headerContainerNav}>
-                <a className={classnames.headerContainerNavLink}>Dogs</a>
-                <a className={classnames.headerContainerNavLink}>Cats</a>
-                <a className={classnames.headerContainerNavLink}>More</a>
+                {links.map(link => <a key={link} className={classnames.headerContainerNavLink} href="/">{link}</a>)}
             </nav>
             <CartWidget />
             <button onClick={goHome} className={classnames.headerContainerButtonBack}>Back

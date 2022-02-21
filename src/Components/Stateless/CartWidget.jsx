@@ -1,5 +1,5 @@
 import React from 'react'
-import petsImg from '../images/pets.png'
+import petsImg from '../../images/pets.png'
 
 const styles = {
     petsButton:{
