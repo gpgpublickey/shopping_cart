@@ -1,7 +1,9 @@
 import {useState} from 'react'
 import cardDefaultPets from '../../images/card-default-pets.png'
+import { Link } from 'react-router-dom';
 
-const Item = ({id, name, description, conditions, pictureUrl, isAvailable, qualities}) => {
+const Item = ({pet}) => {
+    const {id, name, description, conditions, pictureUrl, isAvailable, qualities} = pet;
     const [counter, setContador] = useState(0);
     const [clicksDate, setLastClickDate] = useState([]);
 
@@ -71,7 +73,9 @@ const Item = ({id, name, description, conditions, pictureUrl, isAvailable, quali
                     </div>
                     <div className="flex items-center justify-between py-4">
                         <h2 tabIndex="0" className="focus:outline-none text-indigo-700 text-xs font-semibold">{strings.viewed}</h2>
-                        <button className="bg-sky-600 hover:bg-sky-500 text-white font-bold py-2 px-4 rounded-full">{strings.adopt}</button>
+                        <Link to={`details/${id}`}>
+                            <button className="bg-sky-600 hover:bg-sky-500 text-white font-bold py-2 px-4 rounded-full">{strings.adopt}</button>
+                        </Link>
                     </div>
                 </div>
             </div>

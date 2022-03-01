@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 import logo from '../../images/logo.png'
 import CartWidget from './CartWidget';
 
@@ -34,7 +35,7 @@ const navbar = ({links}) => {
                 <span className={classnames.headerContainerLinkSpan}>Adopt a pet</span>
             </a>
             <nav className={classnames.headerContainerNav}>
-                {links.map(link => <a key={link} className={classnames.headerContainerNavLink} href="/">{link}</a>)}
+                {links.map(category => <Link key={category} to={`categories/${category}`}><span key={category} className={classnames.headerContainerNavLink}>{category}</span></Link>)}
             </nav>
             <CartWidget />
             <button onClick={goHome} className={classnames.headerContainerButtonBack}>Back
