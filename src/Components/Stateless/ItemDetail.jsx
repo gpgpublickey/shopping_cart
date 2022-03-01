@@ -1,8 +1,10 @@
-import {useEffect} from 'react'
+import React from 'react'
+import { useParams } from 'react-router-dom';
 
 export const ItemDetail = ({detail}) => {
-  let {id, name, fullDescription, color, size, age, image} = detail;
-  
+  let {name, fullDescription, color, size, age, image} = detail;
+  const {id} = useParams();
+
   return (
     <div>
       <section className="text-gray-600 body-font overflow-hidden">
@@ -12,9 +14,13 @@ export const ItemDetail = ({detail}) => {
               <h2 className="text-2xl title-font text-gray-500 tracking-widest">PET NAME</h2>
               <h1 className="text-gray-900 text-3xl title-font font-medium mb-4">{name}</h1>
               <div className="flex mb-4">
-                <a className="flex-grow text-blue-500 border-b-2 border-blue-500 py-2 text-lg px-1">Description</a>
+                <p className="flex-grow text-blue-500 border-b-2 border-blue-500 py-2 text-lg px-1">Description</p>
               </div>
               <p className="leading-relaxed mb-4">{fullDescription}</p>
+              <div className="flex border-t mb-6 border-gray-200 py-2">
+                <span className="text-gray-500">URL ID</span>
+                <span className="ml-auto text-gray-900">{id}</span>
+              </div>
               <div className="flex border-t border-gray-200 py-2">
                 <span className="text-gray-500">Color</span>
                 <span className="ml-auto text-gray-900">{color}</span>

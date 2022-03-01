@@ -73,7 +73,7 @@ const Item = ({pet}) => {
                     </div>
                     <div className="flex items-center justify-between py-4">
                         <h2 tabIndex="0" className="focus:outline-none text-indigo-700 text-xs font-semibold">{strings.viewed}</h2>
-                        <Link to={`details/${id}`}>
+                        <Link to={`/item/${id}`}>
                             <button className="bg-sky-600 hover:bg-sky-500 text-white font-bold py-2 px-4 rounded-full">{strings.adopt}</button>
                         </Link>
                     </div>

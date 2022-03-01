@@ -1,7 +1,7 @@
 import './App.css';
 import Navbar from './Components/Stateless/Navbar';
 import { ItemListContainer } from './Components/Container/ItemListContainer';
-import bgPrints from './images/bgPrints.png'
+import bgPrints from './images/bgPrints.png';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { ItemDetailContainer } from './Components/Container/ItemDetailContainer';
 import FactWidget from './Components/Container/FactWidget';
@@ -23,14 +23,14 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-      <Navbar links={['Dogs', 'Cats', 'More']} />
+      <Navbar links={['Dogs', 'Cats', 'All']} />
       <Routes>
         <Route index element = {<ItemListContainer greeting="Beautyfull pets waiting for an owner!"/>}></Route>
-        <Route path='details'>
-          <Route path=':id' element={<ItemDetailContainer/>}></Route>
+        <Route path='category'>
+          <Route path=':category' element={<ItemListContainer greeting="Select your favourite pet:"/>}></Route>
         </Route>
-        <Route path='categories'>
-          <Route path=':category' element={<ItemListContainer/>}></Route>
+        <Route path='item'>
+          <Route path=':id' element={<ItemDetailContainer/>}></Route>
         </Route>
       </Routes>
       </BrowserRouter>

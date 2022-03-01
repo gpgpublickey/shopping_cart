@@ -1,6 +1,29 @@
 # Getting Started with Shopping cart
+![mapanimal](https://user-images.githubusercontent.com/7245667/156694282-3b06fc8d-c137-47c8-8a56-d0459f434820.gif)
+Pet adopting shopping cart, this site is part of the metaverse of Mapanimal, a platform to take care of animals in risk using technology in their favor.
+The pet adopting system will be integrated to the Mapanimal web page to bring to many animal-care organizations the chance to publish their rescued animals.
+On this way, people will have the chance to choose a pet to adopt and give it a home.
+
+## Non functional requirements:
+
+The site is built as an SPA app with React.
+
+Tailwind (https://tailwindcss.com/) was chosen to handle styling over all the SPA.
+
+In addition, Jest is the unit testing framework.
+
+Most of the HTTP calls are mocked as static JSON file in the /public/mocks folder. This ones will be replaced by an Firebase API as part of the application roadmap.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+## Deployment
+The app is deployed using vercel.
+
+The last version of the deployed site is here: https://shopping-cart-cristiangiagante.vercel.app/
+
+### Github
+
+https://github.com/gpgpublickey/shopping_cart
 
 ## Available Scripts
 
@@ -30,8 +53,3 @@ Your app is ready to be deployed!
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
 ### `npm run eject`
-
-## Deployment
-The app is deployed using vercel.
-
-The last version of the deployed site is here: https://shopping-cart-cristiangiagante.vercel.app/

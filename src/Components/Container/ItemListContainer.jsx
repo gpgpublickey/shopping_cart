@@ -1,9 +1,11 @@
 import React from 'react'
 import ItemList from './ItemList'
 import {useEffect, useState} from 'react'
+import { useParams } from 'react-router-dom';
 
 export const ItemListContainer = ({greeting}) => {
   const [pets, setPets] = useState([]);
+  const {category} = useParams();
 
   function getPets() {
     setTimeout(() => fetch("./../../../mocks/itemList.json")
@@ -25,7 +27,7 @@ useEffect(() => {
     return () => {
       console.log('Cleaner');
     }
-  }, [])
+  }, [category])
   
   console.log('Render');
 
