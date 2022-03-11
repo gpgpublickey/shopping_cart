@@ -23,7 +23,7 @@ const Item = ({pet}) => {
         isAvailable: 'Needs an owner',
         notAvailable: 'Adopted!',
         viewed: `Viewed : ${counter} times`,
-        adopt: 'Adopt'
+        adopt: 'More info'
     };
 
     function addClick() {
