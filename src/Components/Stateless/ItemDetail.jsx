@@ -1,5 +1,5 @@
 import {useContext, useEffect } from 'react'
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { CartContext } from '../contexts/cartContext';
 import { CounterContext } from '../contexts/counterContext';
 import { ItemCount } from './ItemCount';
@@ -55,7 +55,11 @@ useEffect(() => {
                 </button>
               </div>
               <ItemCount onAdd={(n) => ++n} onRemove={(n) => --n}/>
-              {showFinishButton ? <button className="mt-5 bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">Adopt pets!</button> : ''}
+              {showFinishButton ? 
+                <Link to={`/cart/`}>
+                  <button className="mt-5 bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">Adopt pets!</button>
+                </Link> : ''
+              }
             </div>
             <img alt="ecommerce" className="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded" src={image || 'https://dummyimage.com/400x400'} />
           </div>

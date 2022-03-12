@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { ItemDetail } from '../Stateless/ItemDetail'
+import { CounterContextProvider } from '../contexts/counterContext'
 
 export const ItemDetailContainer = () => {
   const [itemDetail, setItemDetail] = useState(null);
@@ -21,6 +22,8 @@ export const ItemDetailContainer = () => {
   }
 
   return (
-    <div>{itemDetail ? <ItemDetail detail={itemDetail}/> : 'Loading...'}</div>
+    <CounterContextProvider>
+      <div>{itemDetail ? <ItemDetail detail={itemDetail}/> : 'Loading...'}</div>
+    </CounterContextProvider>
   )
 }
