@@ -2,35 +2,32 @@ import React from 'react'
 import ItemList from './ItemList'
 import {useEffect, useState} from 'react'
 import { useParams } from 'react-router-dom';
+import { getDocuments, getDocumentsByAttribute } from '../../firebase/firebaseClient'
 
 export const ItemListContainer = ({greeting}) => {
   const [pets, setPets] = useState([]);
   const {category} = useParams();
 
-  function getPets() {
-    setTimeout(() => fetch("./../../../mocks/itemList.json")
-      .then(r => r.json())
-      .then(r => {
-        setPets(r);
-        console.log('Pets loaded')
-      }).catch(e => {
-          console.warn(e);
-      }).finally(() => {
-          console.info('Load Pets stage finished');
-      }), 2000);
+  async function getPets() {
+    try {
+      var pets = [];
+      const query = category != undefined && category != "All" ? await getDocumentsByAttribute("pets", "category", category) : await getDocuments("pets");
+      query.forEach(pet => {
+        pets.push({...pet.data(), id: pet.id});
+      });
+      console.log(pets);
+      setPets(pets);
+      console.log(`${pets.length} Pet(s) loaded`)
+    }
+    catch(e) {
+      console.error(e);
+    }
 }
 
 useEffect(() => {
-    console.log('Action');
     getPets();
-  
-    return () => {
-      console.log('Cleaner');
-    }
   }, [category])
   
-  console.log('Render');
-
   return (
     <>
       <h1 className='relative mt-5 mb-5 text-4xl text-red-500'>{greeting}</h1>
