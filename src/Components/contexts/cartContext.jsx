@@ -6,17 +6,18 @@ export const CartContext = React.createContext(
     {
         pets: [],
         showFinishButton: false,
-        addItem: () => {console.warn(eventWarning)},
-        removeItem: () => {console.warn(eventWarning)},
+        addItem: (item, quantity) => {console.warn(eventWarning)},
+        removeItem: (id) => {console.warn(eventWarning)},
         clear: () => {console.warn(eventWarning)},
-        showButton: () => {console.warn(eventWarning)}
+        showButton: () => {console.warn(eventWarning)},
+        getItemsInCart: () => 0
     }
 );
 
 export const CartContextProvider = ({children}) => {
     const [items, setItems] = useState([]);
+    const [itemsInCart, setItemsInCart] = useState(0);
     const [showFinishButton, setShowButton] = useState(false);
-
 
     const addItem = (item, quantity) => {
         if(!isInCart(item.id) && quantity > 0) {
@@ -25,7 +26,7 @@ export const CartContextProvider = ({children}) => {
                 quantity: quantity
             });
             setItems(items);
-            alert(`Let's suppose you clone the pet ${quantity} time(s) and put it in your home cart`);
+            setItemsInCart(itemsInCart + quantity);
         }
         else{
             alert(`Item already exist`);
@@ -33,8 +34,10 @@ export const CartContextProvider = ({children}) => {
     }
 
     const removeItem = (id) => {
-        items.splice(id);
+        let itemAggregator = items.find(i => i.item.id == id);
+        items.splice(items.indexOf(itemAggregator), 1);
         setItems(items);
+        setItemsInCart(itemsInCart - itemAggregator.quantity);
     }
 
     const clear = () => {
@@ -55,7 +58,8 @@ export const CartContextProvider = ({children}) => {
         addItem: addItem,
         removeItem: removeItem,
         clear: clear,
-        showButton: showButton
+        showButton: showButton,
+        itemsInCart: itemsInCart
     };
 
     return (

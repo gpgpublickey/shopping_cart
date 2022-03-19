@@ -8,6 +8,7 @@ import FactWidget from './Components/Container/FactWidget';
 import { CartContextProvider } from './Components/contexts/cartContext';
 import { CartContext } from './Components/contexts/cartContext';
 import { useContext } from 'react';
+import Cart from './Components/Container/Cart';
 
 function App() {
   const styles = {
@@ -37,6 +38,7 @@ function App() {
             <Route path='item'>
               <Route path=':id' element={<ItemDetailContainer/>}></Route>
             </Route>
+            <Route path='cart' element={<Cart/>}></Route>
           </Routes>
           </BrowserRouter>
           <br/>

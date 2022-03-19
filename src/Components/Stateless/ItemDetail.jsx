@@ -13,8 +13,6 @@ export const ItemDetail = ({detail}) => {
   const item = {...detail, ...{id: id}};
 
 useEffect(() => {
-  console.log(showButton)
-
 }, [showButton])
 
 
@@ -31,7 +29,7 @@ useEffect(() => {
               </div>
               <p className="leading-relaxed mb-4">{fullDescription}</p>
               <div className="flex border-t mb-6 border-gray-200 py-2">
-                <span className="text-gray-500">URL ID</span>
+                <span className="text-gray-500">ID</span>
                 <span className="ml-auto text-gray-900">{id}</span>
               </div>
               <div className="flex border-t border-gray-200 py-2">
@@ -55,10 +53,9 @@ useEffect(() => {
                 </button>
               </div>
               <ItemCount onAdd={(n) => ++n} onRemove={(n) => --n}/>
-              {showFinishButton ? 
-                <Link to={`/cart/`}>
+              {showFinishButton && <Link to={`/cart/`}>
                   <button className="mt-5 bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">Adopt pets!</button>
-                </Link> : ''
+                </Link>
               }
             </div>
             <img alt="ecommerce" className="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded" src={image || 'https://dummyimage.com/400x400'} />

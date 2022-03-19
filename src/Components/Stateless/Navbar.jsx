@@ -1,7 +1,8 @@
-import React from 'react'
+import React from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../images/logo.png'
 import CartWidget from './CartWidget';
+
 
 const styles = {
     logoHeader: {
@@ -22,12 +23,12 @@ const classnames = {
     headerContainerButtonBack: 'inline-flex items-center bg-gray-800 border-0 py-1 px-3 focus:outline-none hover:bg-gray-700 rounded text-base mt-4 md:mt-0',
 };
 
-function goHome() {
-    document.location.href = "/";
-}
+const Navbar = ({links}) => {
+    function goHome() {
+        document.location.href = "/";
+    }
 
-const navbar = ({links}) => {
-  return (
+    return (
     <header className={classnames.header}>
         <div className={classnames.headerContainer}>
             <a className={classnames.headerContainerLink} href="/">
@@ -37,7 +38,7 @@ const navbar = ({links}) => {
             <nav className={classnames.headerContainerNav}>
                 {links.map(category => <Link key={category} to={`category/${category}`}><span key={category} className={classnames.headerContainerNavLink}>{category}</span></Link>)}
             </nav>
-            <CartWidget />
+            <CartWidget/>
             <button onClick={goHome} className={classnames.headerContainerButtonBack}>Back
                 <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 ml-1" viewBox="0 0 28 24">
                     <path d="M5 12h14M12 5l7 7-7 7"></path>
@@ -48,7 +49,7 @@ const navbar = ({links}) => {
             </button>
         </div>
     </header>
-  );
+    );
 }
 
-export default navbar;
+export default Navbar;

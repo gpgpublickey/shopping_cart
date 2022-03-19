@@ -13,7 +13,6 @@ const FactWidget = () => {
             return r.json()
         })
         .then(r => {
-            console.log(r);
             setFact(r.data);
         })
         .catch(e =>{
