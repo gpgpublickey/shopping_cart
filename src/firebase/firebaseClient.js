@@ -1,7 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-import { getFirestore, collection, getDocs, where, query } from "firebase/firestore"
+import { getFirestore, collection, getDocs, where, query, doc, setDoc, addDoc} from "firebase/firestore"
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -20,7 +19,6 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
 
 export const getFirebase = () => { return app }
 
@@ -31,3 +29,7 @@ export const getDocuments = async (collectionName) => await getDocs(collection(g
 export const getDocumentsById = async (collectionName, id) => await getDocs(query(collection(getDb(), collectionName), where("id", "==", id)));
 
 export const getDocumentsByAttribute = async (collectionName, attribute, value) => await getDocs(query(collection(getDb(), collectionName), where(attribute, "==", value)));
+
+export const addDocumentWithId = async (collectionName, id, data) => await setDoc(doc(getDb(), collectionName, id), data);
+
+export const addDocument = async (collectionName, data) => await addDoc(collection(getDb(), collectionName), data);

@@ -36,3 +36,12 @@
     transform: rotate(360deg);
   }
 }
+
+legend {
+  font-size: 0.7em;
+}
+
+input {
+  height: 2em;
+  font-size: 0.7em;
+}

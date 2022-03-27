@@ -8,24 +8,18 @@ export const ItemListContainer = ({greeting}) => {
   const [pets, setPets] = useState([]);
   const {category} = useParams();
 
-  async function getPets() {
-    try {
-      var pets = [];
-      const query = category != undefined && category != "All" ? await getDocumentsByAttribute("pets", "category", category) : await getDocuments("pets");
-      query.forEach(pet => {
+  useEffect(() => {
+    var pets = [];
+    const query = category !== undefined && category !== "all" ? getDocumentsByAttribute("pets", "category", category) : getDocuments("pets");
+    query.then(r => {
+      r.forEach(pet => {
         pets.push({...pet.data(), id: pet.id});
       });
-      console.log(pets);
-      setPets(pets);
-      console.log(`${pets.length} Pet(s) loaded`)
-    }
-    catch(e) {
+    }).catch(e => {
       console.error(e);
-    }
-}
-
-useEffect(() => {
-    getPets();
+    }).finally(() => {
+      setPets(pets);
+    });
   }, [category])
   
   return (

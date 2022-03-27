@@ -1,32 +1,34 @@
 import React, {useState} from 'react'
 
 let eventWarning = "Event not implemented";
-
-export const CartContext = React.createContext(
-    {
-        pets: [],
-        showFinishButton: false,
-        addItem: (item, quantity) => {console.warn(eventWarning)},
-        removeItem: (id) => {console.warn(eventWarning)},
-        clear: () => {console.warn(eventWarning)},
-        showButton: () => {console.warn(eventWarning)},
-        getItemsInCart: () => 0
-    }
-);
+const defaultContext = {
+    pets: [],
+    showFinishButton: false,
+    addItem: (item, quantity) => {console.warn(eventWarning)},
+    removeItem: (id) => {console.warn(eventWarning)},
+    clear: () => {console.warn(eventWarning)},
+    showButton: () => {console.warn(eventWarning)},
+    itemsInCart: 0,
+    totalPrice: 0,
+    resetCart: () => {console.warn(eventWarning)}
+}
+export const CartContext = React.createContext(defaultContext);
 
 export const CartContextProvider = ({children}) => {
     const [items, setItems] = useState([]);
     const [itemsInCart, setItemsInCart] = useState(0);
     const [showFinishButton, setShowButton] = useState(false);
+    const [totalPrice, setTotalPrice] = useState(0);
 
     const addItem = (item, quantity) => {
         if(!isInCart(item.id) && quantity > 0) {
             items.push({
                 item: item,
-                quantity: quantity
+                quantity: quantity,
             });
             setItems(items);
             setItemsInCart(itemsInCart + quantity);
+            setTotalPrice(totalPrice + (quantity * item.price));
         }
         else{
             alert(`Item already exist`);
@@ -38,6 +40,7 @@ export const CartContextProvider = ({children}) => {
         items.splice(items.indexOf(itemAggregator), 1);
         setItems(items);
         setItemsInCart(itemsInCart - itemAggregator.quantity);
+        setTotalPrice(totalPrice - (itemAggregator.quantity * itemAggregator.item.price));
     }
 
     const clear = () => {
@@ -52,14 +55,23 @@ export const CartContextProvider = ({children}) => {
         setShowButton(true);
     }
 
+    const resetCart = () => {
+        setItems([]);
+        setItemsInCart(0);
+        setShowButton(false);
+        setTotalPrice(0);
+    }
+
     const context = {
         pets: items,
         showFinishButton: showFinishButton,
+        itemsInCart: itemsInCart,
+        totalPrice: totalPrice,
         addItem: addItem,
         removeItem: removeItem,
         clear: clear,
         showButton: showButton,
-        itemsInCart: itemsInCart
+        resetCart: resetCart
     };
 
     return (

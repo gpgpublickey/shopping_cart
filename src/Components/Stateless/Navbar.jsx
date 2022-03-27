@@ -36,7 +36,7 @@ const Navbar = ({links}) => {
                 <span className={classnames.headerContainerLinkSpan}>Adopt a pet</span>
             </a>
             <nav className={classnames.headerContainerNav}>
-                {links.map(category => <Link key={category} to={`category/${category}`}><span key={category} className={classnames.headerContainerNavLink}>{category}</span></Link>)}
+                {links.map(category => <Link key={category.key} to={`category/${category.key}`}><span key={category.key} className={classnames.headerContainerNavLink}>{category.description}</span></Link>)}
             </nav>
             <CartWidget/>
             <button onClick={goHome} className={classnames.headerContainerButtonBack}>Back

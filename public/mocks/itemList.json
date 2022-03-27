@@ -1,6 +1,0 @@
-[
-    {"id": 1, "category": "Dogs", "qualities": ["friendship"], "name": "Fido", "isAvailable": true, "description": "The best friend you can desire, Fido is the best wingman", "conditions": "Tracing required", "pictureUrl": null},
-    {"id": 2, "category": "Cats", "qualities": ["funny"], "name": "Dido", "isAvailable": false, "description": "A cat really funny", "conditions": "Adoption contract required", "pictureUrl": null},
-    {"id": 3, "category": "Cats", "qualities": ["calm", "relax", "prrr"], "name": "Chocolin", "isAvailable": true, "description": "A food lover", "conditions": "No Tracing required", "pictureUrl": null},
-    {"id": 4, "category": "Dogs", "qualities": ["ultra jumping", "prrr"], "name": "Piolin", "isAvailable": false, "description": "Like a jumping stick but with pet shape", "conditions": "Partial tracing required", "pictureUrl": null}
-]

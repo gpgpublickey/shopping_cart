@@ -1,5 +1,5 @@
 # Getting Started with Shopping cart
-![mapanimal](https://user-images.githubusercontent.com/7245667/156694282-3b06fc8d-c137-47c8-8a56-d0459f434820.gif)
+![demo](https://user-images.githubusercontent.com/7245667/160293929-ee5c7722-ba1b-40b1-afb5-4f73049b083c.gif)
 Pet adopting shopping cart, this site is part of the metaverse of Mapanimal, a platform to take care of animals in risk using technology in their favor.
 The pet adopting system will be integrated to the Mapanimal web page to bring to many animal-care organizations the chance to publish their rescued animals.
 On this way, people will have the chance to choose a pet to adopt and give it a home.

@@ -6,6 +6,8 @@ import { getDocumentsById } from '../../firebase/firebaseClient'
 
 export const ItemDetailContainer = () => {
   const [itemDetail, setItemDetail] = useState(null);
+  const [showNotFound, setshowNotFound] = useState(false);
+
   const {id} = useParams();
   
   useEffect(() => {
@@ -15,9 +17,10 @@ export const ItemDetailContainer = () => {
   async function getItemDetail(id) {
       try {
         const query = await getDocumentsById("details", id);
-        console.log(query.docs)
+        if (query.docs.length === 0) {
+          setshowNotFound(true);
+        }
         setItemDetail(query.docs[0]?.data());
-        console.log('Details loaded')
       }
       catch(e) {
         console.error(e);
@@ -26,7 +29,10 @@ export const ItemDetailContainer = () => {
 
   return (
     <CounterContextProvider>
-      <div>{itemDetail ? <ItemDetail detail={itemDetail}/> : 'Loading...'}</div>
+      <div>
+        <br/>
+        {itemDetail ? <ItemDetail detail={itemDetail}/> : showNotFound ? `Id ${id} not found` : 'Loading...'}
+      </div>
     </CounterContextProvider>
   )
 }

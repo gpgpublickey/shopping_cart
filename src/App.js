@@ -1,14 +1,13 @@
 import './App.css';
-import Navbar from './Components/Stateless/Navbar';
+import React from 'react';
 import { ItemListContainer } from './Components/Container/ItemListContainer';
-import bgPrints from './images/bgPrints.png';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { ItemDetailContainer } from './Components/Container/ItemDetailContainer';
-import FactWidget from './Components/Container/FactWidget';
 import { CartContextProvider } from './Components/contexts/cartContext';
-import { CartContext } from './Components/contexts/cartContext';
-import { useContext } from 'react';
+import FactWidget from './Components/Container/FactWidget';
 import Cart from './Components/Container/Cart';
+import bgPrints from './images/bgPrints.png';
+import { NavBarContainer } from './Components/Container/NavBarContainer';
 
 function App() {
   const styles = {
@@ -23,13 +22,12 @@ function App() {
       left: '-100px'
     }
   }
-  const {pets, addItem} = useContext(CartContext);
-
+  
   return (
       <div className="App">
         <CartContextProvider>
           <BrowserRouter>
-          <Navbar links={['Dogs', 'Cats', 'All']} />
+          <NavBarContainer/>
           <Routes>
             <Route index element = {<ItemListContainer greeting="Beautyfull pets waiting for an owner!"/>}></Route>
             <Route path='category'>

@@ -30,7 +30,7 @@ const CartWidget = () => {
   return (
     <Link to='cart'>
         {
-            itemsInCart == 0 ? '' : <button style={styles.petsButton} className={classnames.headerContainerButtonMyPets}>
+            <button style={styles.petsButton} className={classnames.headerContainerButtonMyPets}>
                 <img src={petsImg} style={styles.petsImgHeader} />My Pets ({itemsInCart})
             </button>
         }
